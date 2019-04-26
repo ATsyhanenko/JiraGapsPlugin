@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2"> 
+  <plugin-info> 
+    <description>${project.description}</description>  
+    <version>${project.version}</version>  
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
+    <param name="plugin-icon">images/pluginIcon.png</param>  
+    <param name="plugin-logo">images/pluginLogo.png</param> 
+  </plugin-info>  
+  <!-- add our i18n resource -->  
+  <resource type="i18n" name="i18n" location="Jira"/>  
+  <!-- add our web resources -->  
+  <web-resource key="Jira-resources" name="Jira Web Resources"> 
+    <dependency>com.atlassian.auiplugin:ajs</dependency>  
+    <resource type="download" name="Jira.css" location="/css/Jira.css"/>  
+    <resource type="download" name="Jira.js" location="/js/Jira.js"/>  
+    <resource type="download" name="images/" location="/images"/>  
+    <context>Jira</context> 
+  </web-resource>  
+  <workflow-validator key="gap-balance-validator" name="Gap Balance Validator" i18n-name-key="gap-balance-validator.name" class="org.applebase.jira.workflow.GapBalanceValidatorFactory"> 
+    <description key="gap-balance-validator.description">The Gap Balance Validator Plugin</description>  
+    <validator-class>org.applebase.jira.workflow.GapBalanceValidator</validator-class>  
+    <resource type="velocity" name="view" location="templates/validators/gap-balance-validator.vm"/>  
+  </workflow-validator>
+</atlassian-plugin>
